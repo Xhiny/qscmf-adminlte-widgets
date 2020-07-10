@@ -1,0 +1,14 @@
+<extend name="Admin@default/common/dashboard_layout"/>
+
+<block name="content">
+    <!-- Content Header (Page header) -->
+    <section class="content-header clearfix">
+        <h1>
+            {$title}
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content" n-id="{$nid}">
+        {$content}
+    </section>
+</block>

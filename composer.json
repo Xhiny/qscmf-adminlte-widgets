@@ -1,0 +1,29 @@
+{
+    "name": "quansitech/qscmf-adminlte-widgets",
+    "description": "qscmf adminlte widget",
+    "type": "library",
+    "keywords": ["qscmf", "component", "widget", "adminlte"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tiderjian",
+            "email": "tider_yatsen@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "tiderjian/think-core": ">=11.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdminLTE\\": "src/"
+        }
+    },
+    "extra": {
+        "qscmf": {
+            "providers": [
+                "AdminLTE\\AdminLTEWidgetsProvider"
+            ]
+        }
+    }
+}
