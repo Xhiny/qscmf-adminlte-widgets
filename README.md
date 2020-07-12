@@ -137,6 +137,8 @@ $box->setIcon('users');
 $box->setBg('info');
 ```
 
+## 背景主题色
+<font color=#17a2b8>info</font>
 
 
 
