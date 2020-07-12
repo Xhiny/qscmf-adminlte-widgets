@@ -8,7 +8,12 @@ class Row{
     public function __construct($content = '', $width=12)
     {
         if($content != ''){
-            $this->addColumn(new Column($content, $width));
+            if($content instanceof Column){
+                $this->addColumn($content);
+            }
+            else{
+                $this->addColumn(new Column($content, $width));
+            }
         }
     }
 

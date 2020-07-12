@@ -9,7 +9,7 @@ class InfoBox{
     protected $bg;
     protected $tips;
 
-    public function __construct($text, $amount, $bg = '', $icon = [])
+    public function __construct($text, $amount, $bg = '', $icon = '')
     {
         $this->text = $text;
         $this->amount = $amount;
@@ -18,8 +18,8 @@ class InfoBox{
           $this->setBg($bg);
         }
 
-        if(!empty($icon) && is_array($icon)){
-          $this->setIcon($icon['icon'], $icon['bg']);
+        if($icon != ''){
+          $this->setIcon($icon);
         }
     }
 
@@ -31,11 +31,9 @@ tips;
         return $this;
     }
 
-    public function setIcon($icon, $bg = ''){
-        $bg_class = $bg ? 'bg-' . $bg : '';
-
+    public function setIcon($icon){
         $this->icon = <<<icon
-<span class="info-box-icon {$bg_class}"><i class="fa fa-lg fa-{$icon}"></i></span>
+<span class="info-box-icon"><i class="fa fa-lg fa-{$icon}"></i></span>
 icon;
         return $this;
     }
