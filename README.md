@@ -138,7 +138,47 @@ $box->setBg('info');
 ```
 
 ## 背景主题色
-<font color='#17a2b8'>info</font>
+<font color='#17a2b8'>info #17a2b8</font>
 
+<font color='#28a745'>success #28a745</font>
 
+<font color='#ffc107'>warning #ffc107</font>
 
+<font color='#dc3545'>danger #dc3545</font>
+
+<font color='#6c757d'>secondary #6c757d</font>
+
+<font color='#007bff'>primary #007bff</font>
+
+<font color='#000000'>black #000000</font>
+
+<font color='#343a40'>graydark #343a40</font>
+
+<font color='#adb5bd'>gray #adb5bd</font>
+
+<font color='#1f2d3d'>light #1f2d3d</font>
+
+<font color='#6610f2'>indigo #6610f2</font>
+
+<font color='#3c8dbc'>lightblue #3c8dbc</font>
+
+<font color='#001f3f'>navy #001f3f</font>
+
+<font color='#605ca8'>purple #605ca8</font>
+
+<font color='#f012be'>fuchsia #f012be</font>
+
+<font color='#e83e8c'>pink #e83e8c</font>
+
+<font color='#d81b60'>maroon #d81b60</font>
+
+<font color='#01ff70'>lime #01ff70</font>
+
+<font color='#ff851b'>orange #ff851b</font>
+
+<font color='#39cccc'>teal #39cccc</font>
+
+<font color='#3d9970'>olive #3d9970</font>
+
+效果图
+<img src="https://user-images.githubusercontent.com/1665649/87241460-ed41d400-c455-11ea-9df6-7ca03cc72227.png" />
