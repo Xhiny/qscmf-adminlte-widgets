@@ -39,7 +39,7 @@ icon;
     }
 
     public function setBg($bg){
-        $this->bg = ' bg-' . $bg;
+        $this->bg = ' qs-admin-lte-bg-' . $bg;
 
         return $this;
     }
