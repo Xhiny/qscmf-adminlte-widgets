@@ -142,9 +142,8 @@ $box->setBg('info');
 
 用法:
 ```php
-// 第一个参数为背景主题色，默认为primary，见主题颜色说明
-// 第二个参数为Tab的标题，默认为空字符串
-$tab = new Tab('success', 'TabTitle');
+// 参数为背景主题色，默认为primary，见主题颜色说明
+$tab = new Tab('success');
 
 // 第一个参数为tab项目的标题
 // 第二个参数为tab项目的html内容，或者是实现了__toString魔术函数的对象

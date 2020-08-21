@@ -7,29 +7,18 @@ class Tab{
 
     protected $key;
     protected $bg;
-    protected $title;
     protected $tab_options;
     protected $all_header;
     protected $all_body;
 
-    public function __construct($bg='primary', $title='')
+    public function __construct($bg='primary')
     {
         $this->key = Str::uuid()->toString();
         self::setBg($bg);
-        $title && self::setTitle($title);
     }
 
     public function setBg($bg){
         $this->bg = $bg;
-    }
-
-    public function setTitle($title){
-        $this->title = <<<title
-<li class="py-3 px-4">
-<h3 class="card-title">{$title}</h3>
-</li>
-title;
-
     }
 
     public function addTab($header, $body, $tip = null){
