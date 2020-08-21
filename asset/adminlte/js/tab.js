@@ -93,7 +93,7 @@
     }
 
     function setTransitionEndSupport() {
-        $.fn.emulateTransitionEnd = transitionEndEmulator;
+        $.fn.tabEmulateTransitionEnd = transitionEndEmulator;
         $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
 
@@ -339,7 +339,7 @@ var Tab = /*#__PURE__*/function () {
 
         if (active && isTransitioning) {
             var transitionDuration = Util.getTransitionDurationFromElement(active);
-            $(active).removeClass(CLASS_NAME_SHOW$6).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+            $(active).removeClass(CLASS_NAME_SHOW$6).one(Util.TRANSITION_END, complete).tabEmulateTransitionEnd(transitionDuration);
         } else {
             complete();
         }

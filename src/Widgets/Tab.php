@@ -68,7 +68,7 @@ itemHrader;
 
     protected function setTips($tips){
         return <<<tips
-<i class="fa fa-question-circle page-tooltip" data-toggle="tooltip" data-original-title="{$tips}" data-placement="right"></i>
+<span><i class="fa fa-question-circle page-tooltip" data-toggle="tooltip" data-original-title="{$tips}" data-placement="right"></i></span>
 tips;
 
     }
