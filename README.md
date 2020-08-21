@@ -51,7 +51,7 @@ $content->display();
 //实例化row
 $row = new Row();
 //也可以传入Column类型对象
-$row = new Row(new Column(new InfoBox('日活', 100, 'info', ['icon' => 'users'])));
+$row = new Row(new Column(new InfoBox('日活', 100, 'info', 'users')));
 //或者是html字符串, 此时可传入第二个参数来设定所占宽度(总共12)
 $box = <<<html
 <div style="width:100%;height:100px;background-color: red;"></div>
