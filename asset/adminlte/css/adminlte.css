@@ -361,6 +361,7 @@
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
     border-color: #e9ecef #e9ecef #dee2e6;
+    color: #40a9ff;
 }
 
 .nav-tabs .nav-link.disabled {
@@ -452,7 +453,3 @@ h1,h2,h3,h4,h5,h6,
 .h1,.h2,.h3,.h4,.h5,.h6 {
     color: inherit!important;
 }
-
-/*.card-header a:hover {*/
-/*    background-color: transparent!important;*/
-/*}*/
