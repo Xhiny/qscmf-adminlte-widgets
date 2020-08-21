@@ -51,7 +51,7 @@ $content->display();
 //实例化row
 $row = new Row();
 //也可以传入Column类型对象
-$row = new Row(new Column(new InfoBox('日活', 100, 'info', ['icon' => 'users'])));
+$row = new Row(new Column(new InfoBox('日活', 100, 'info', 'users')));
 //或者是html字符串, 此时可传入第二个参数来设定所占宽度(总共12)
 $box = <<<html
 <div style="width:100%;height:100px;background-color: red;"></div>
@@ -94,7 +94,7 @@ $column->append($box2);
 //第三个参数，card header的背景色，见主题颜色说明
 //第四个参数，是否启动折叠功能
 //第五个参数，是否启动关闭功能
-$card new Card($card_row, '统计', 'danger', true, true);
+$card = new Card($card_row, '统计', 'danger', true, true);
 
 //设置body内容
 //参数类型，html字符串或者实现了__toString魔术函数的对象
@@ -137,6 +137,23 @@ $box->setIcon('users');
 $box->setBg('info');
 ```
 
+### Tab
+可设置多个标签页的组件
+
+用法:
+```php
+// 参数为背景主题色，默认为primary，见主题颜色说明
+$tab = new Tab('success');
+
+// 第一个参数为tab项目的标题
+// 第二个参数为tab项目的html内容，或者是实现了__toString魔术函数的对象
+// 第三个参数为tab项目标题的提示，默认为空
+$tab->addTab('title', 'body', 'tips');
+
+// 多个tab则实现多个addTab方法
+$tab->addTab('divider', new DividerBuilder('222'));
+```
+
 ## 背景主题色
 <font color='#17a2b8'>info #17a2b8</font>
 
@@ -154,9 +171,9 @@ $box->setBg('info');
 
 <font color='#343a40'>graydark #343a40</font>
 
-<font color='#adb5bd'>gray #adb5bd</font>
+<font color='#6c757d'>gray #6c757d</font>
 
-<font color='#1f2d3d'>light #1f2d3d</font>
+<font color='#f8f9fa'>light #f8f9fa</font>
 
 <font color='#6610f2'>indigo #6610f2</font>
 
@@ -176,9 +193,9 @@ $box->setBg('info');
 
 <font color='#ff851b'>orange #ff851b</font>
 
-<font color='#39cccc'>teal #39cccc</font>
+<font color='#20c997'>teal #20c997</font>
 
 <font color='#3d9970'>olive #3d9970</font>
 
-效果图
-<img src="https://user-images.githubusercontent.com/1665649/87241460-ed41d400-c455-11ea-9df6-7ca03cc72227.png" />
+#### 效果图 
+![image](https://user-images.githubusercontent.com/35066497/90729026-7d4a2780-e2f8-11ea-9fa7-a77735e0eb33.png)

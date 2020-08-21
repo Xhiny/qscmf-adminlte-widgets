@@ -69,7 +69,7 @@ html;
     {
         return <<<result
 <div class="card">
-  <div class="card-header bg-{$this->bg}">
+  <div class="card-header qs-admin-lte-bg-{$this->bg}">
     <h3 class="card-title">{$this->title}</h3>
     <div class="card-tools">
       {$this->buildCollapse()}
