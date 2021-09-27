@@ -13,6 +13,8 @@ composer require quansitech/qscmf-adminlte-widgets
 + [Column](https://github.com/quansitech/qscmf-adminlte-widgets#Column)
 + [Card](https://github.com/quansitech/qscmf-adminlte-widgets#Card)
 + [InfoBox](https://github.com/quansitech/qscmf-adminlte-widgets#InfoBox)
++ [Tab](https://github.com/quansitech/qscmf-adminlte-widgets#Tab)
++ [UlListCard](https://github.com/quansitech/qscmf-adminlte-widgets#UlListCard)
 
 ### Content
 面板组件，所有的子组件都必须添加到Content组件
@@ -153,6 +155,132 @@ $tab->addTab('title', 'body', 'tips');
 // 多个tab则实现多个addTab方法
 $tab->addTab('divider', new DividerBuilder('222'));
 ```
+
+### UlListCard
+可折叠关闭的无序列表的组件
+
+示例:
+```php
+// 第一个参数为标题
+// 第二个参数为背景主题色，默认为primary，见主题颜色说明
+// 第三个参数，是否启动折叠功能，默认true 开启
+// 第四个参数，是否启动关闭功能，默认true 开启
+$ul = new \AdminLTE\Widgets\UlListCard\UlListCard("待处理数据","danger");
+
+// 添加底部跳转链接
+$ul->addFooterUrl("查看更多", U("admin/review/index"));
+
+// 获取需要展示的数据
+$list = [["id" => 1,"title" => "title","amount" => 100,"summary"=>"summary","date"=>date("Y-m-d", time())]];
+foreach ($list as $v){
+    $item = new \AdminLTE\Widgets\UlListCard\LiItem();
+    // 设置标题及字体颜色
+    $item->setTitle($v['title'],"primary");
+    // 设置标题右边标签项及其背景颜色
+    $item->addRightTag("$".$v['amount'],"success");
+    // 设置描述项    
+    $item->addColumn($v['summary']);
+    $item->addColumn($v['date']);
+    // 设置点击标题跳转链接    
+    $item->setUrl(U("admin/review/detail",['id'=>$v['id']]));
+    // 添加一个li项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
+    $ul->addLiItem($item);
+}
+
+echo $ul;
+```
+
+函数说明
++ setHeader
+
+  设置容器标题
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | header | 标题 | string | 是   |   |
+  
++ setBg
+
+  指定背景主题色，默认为primary，见主题颜色说明
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | bg | 背景主题色 | string |  是   |   |
+  
++ addFooterUrl
+
+  添加底部跳转链接
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | title | 标题 | string | 是   |   |
+  | url | 链接  | string| 否   |   |
+  
++ setFooter
+
+  设置底部html
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | footer | html | string | 是   |   |
+  
++ setFooterExtraClass
+
+  指定底部html样式
+
+  | 参数     | 说明                           | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | :----- |
+  | footer_extra_class | css类名 |  string  | 是   |   |
+  
++ addLiItem
+
+  添加一个li项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | item | \AdminLTE\Widgets\UlListCard\LiItem 对象 | object | 是   |   |
+
+
+### LiItem
+无需列表项，与UlListCard搭配使用
+
+函数说明
++ setTitle
+
+  设置标题及其字体颜色，默认为primary，见主题颜色说明
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | title | 标题 | string | 是   |   |
+  | title_color | 字体颜色 |  string | 否   | primary  |
+  
++ setUrl
+  
+  指定点击标题跳转链接
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | url | 跳转链接 | string | 是   |   |
+  
++ addRightTag
+
+  设置标题右边标签项及其背景颜色，默认为primary
+
+  bg可选值：primary，secondary，success， info， warning， danger， light， dark
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | value | 标签名称 | string | 是   |   |
+  | bg | 背景颜色 |  string |否   | primary |
+  
++ addColumn
+
+  添加描述项
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | column | 描述内容 | string | 是   |   |
+
 
 ## 背景主题色
 <font color='#17a2b8'>info #17a2b8</font>
