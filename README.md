@@ -56,12 +56,12 @@ $content->display();
   | width | 行宽度，最大12，row为object时失效 |  string | 否   |   |
   | auth_node | 行权限点，格式为 '模块.控制器.方法名' |  string I array | 否   |   |
 
-  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示该按钮，默认为and：
+  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
-  and：用户拥有全部权限则显示该按钮，格式为：
+  and：用户拥有全部权限则显示，格式为：
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'and']
   
-  or：用户一个权限都没有则隐藏该按钮，格式为：
+  or：用户一个权限都没有则隐藏，格式为：
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
 
 ### Row
@@ -96,12 +96,12 @@ $row->addColumn($column, 4);
   | width | 列宽度，最大12，column为object时失效 |  string | 否   |   |
   | auth_node | 行权限点，格式为 '模块.控制器.方法名' |  string I array | 否   |   |
 
-  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示该按钮，默认为and：
+  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
-  and：用户拥有全部权限则显示该按钮，格式为：
+  and：用户拥有全部权限则显示，格式为：
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'and']
   
-  or：用户一个权限都没有则隐藏该按钮，格式为：
+  or：用户一个权限都没有则隐藏，格式为：
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
 
 ### Column
