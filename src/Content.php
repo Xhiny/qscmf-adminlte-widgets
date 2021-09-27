@@ -37,11 +37,13 @@ class Content{
         }
     }
 
-    public function addRow($row, $width = 12){
-        if($row instanceof Row){
+    public function addRow($row, $width = 12, $auth_node = null){
+        $row = filterOneItemByAuthNode($row, $auth_node);
+
+        if($row && $row instanceof Row){
             $this->rows[] = $row;
         }
-        else{
+        elseif($row){
             $this->rows[] = new Row($row, $width);
         }
 

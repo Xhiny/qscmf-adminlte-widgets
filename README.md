@@ -45,6 +45,25 @@ $content->addRow($box, 6);
 $content->display();
 ```
 
+函数说明
++ addRow
+
+  设置行内容
+ 
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | row | \AdminLTE\Row组件或者html字符串 | object I string | 是   |   |
+  | width | 行宽度，最大12，row为object时失效 |  string | 否   |   |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
+
+  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
+  
+  and：用户拥有全部权限则显示，格式为：
+  ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'and']
+  
+  or：用户一个权限都没有则隐藏，格式为：
+  ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
+
 ### Row
 行组件，行是面板表格的基础结构
 
@@ -65,6 +84,25 @@ $row = new Row($box, 6);
 //Column对象无须传递第二个参数，传了也无效
 $row->addColumn($column, 4);
 ```
+
+函数说明
++ addColumn
+
+  设置行内容
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | column | \AdminLTE\Column组件或者html字符串 | object I string | 是   |   |
+  | width | 列宽度，最大12，column为object时失效 |  string | 否   |   |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
+
+  若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
+  
+  and：用户拥有全部权限则显示，格式为：
+  ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'and']
+  
+  or：用户一个权限都没有则隐藏，格式为：
+  ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
 
 ### Column
 列组件，列是面板表格的基础结构，一般都会嵌入行组件中使用
