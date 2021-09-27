@@ -54,7 +54,7 @@ $content->display();
   | :------- | :----------------------------- | ---- | ---- | :----- |
   | row | \AdminLTE\Row组件或者html字符串 | object I string | 是   |   |
   | width | 行宽度，最大12，row为object时失效 |  string | 否   |   |
-  | auth_node | 行权限点，格式为 '模块.控制器.方法名' |  string I array | 否   |   |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
 
   若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
@@ -94,7 +94,7 @@ $row->addColumn($column, 4);
   | :------- | :----------------------------- | ---- | ---- | :----- |
   | column | \AdminLTE\Column组件或者html字符串 | object I string | 是   |   |
   | width | 列宽度，最大12，column为object时失效 |  string | 否   |   |
-  | auth_node | 行权限点，格式为 '模块.控制器.方法名' |  string I array | 否   |   |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
 
   若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
