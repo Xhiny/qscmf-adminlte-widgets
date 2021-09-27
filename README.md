@@ -14,7 +14,7 @@ composer require quansitech/qscmf-adminlte-widgets
 + [Card](https://github.com/quansitech/qscmf-adminlte-widgets#Card)
 + [InfoBox](https://github.com/quansitech/qscmf-adminlte-widgets#InfoBox)
 + [Tab](https://github.com/quansitech/qscmf-adminlte-widgets#Tab)
-+ [UlListCard](https://github.com/quansitech/qscmf-adminlte-widgets#UlListCard)
++ [ListBox](https://github.com/quansitech/qscmf-adminlte-widgets#ListBox)
 
 ### Content
 面板组件，所有的子组件都必须添加到Content组件
@@ -116,6 +116,32 @@ $card->setTitle('趋势图');
 $card->setBg($bg);
 ```
 
+函数说明
++ addFooterMoreUrl
+
+  添加底部跳转链接
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | url | 链接  | string| 是   |   |
+  | title | 标题 | string | 否   | 查看更多  |
+
++ setFooter
+
+  设置底部html
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | footer | html | string | 是   |   |
+
++ setFooterExtraClass
+
+  指定底部html样式
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | footer_extra_class | css类名 |  string  | 是   |   |
+
 
 ### InfoBox
 可设置图标，说明文字，数字，提示的数据展示组件
@@ -156,24 +182,18 @@ $tab->addTab('title', 'body', 'tips');
 $tab->addTab('divider', new DividerBuilder('222'));
 ```
 
-### UlListCard
-可折叠关闭的无序列表的组件
+### ListBox
+设置列表组件
 
 示例:
-```php
-// 第一个参数为标题
-// 第二个参数为背景主题色，默认为primary，见主题颜色说明
-// 第三个参数，是否启动折叠功能，默认true 开启
-// 第四个参数，是否启动关闭功能，默认true 开启
-$ul = new \AdminLTE\Widgets\UlListCard\UlListCard("待处理数据","danger");
 
-// 添加底部跳转链接
-$ul->addFooterUrl("查看更多", U("admin/review/index"));
+```php
+$ul = new \AdminLTE\Widgets\ListBox\ListBox();
 
 // 获取需要展示的数据
 $list = [["id" => 1,"title" => "title","amount" => 100,"summary"=>"summary","date"=>date("Y-m-d", time())]];
 foreach ($list as $v){
-    $item = new \AdminLTE\Widgets\UlListCard\LiItem();
+    $item = new \AdminLTE\Widgets\ListBox\ListItem();
     // 设置标题及字体颜色
     $item->setTitle($v['title'],"primary");
     // 设置标题右边标签项及其背景颜色
@@ -184,10 +204,10 @@ foreach ($list as $v){
     // 设置点击标题跳转链接    
     $item->setUrl(U("admin/review/detail",['id'=>$v['id']]));
     // 添加一个li项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
-    $ul->addLiItem($item);
+    $ul->addListItem($item);
 }
 
-echo $ul;
+echo (new \AdminLTE\Widgets\Card($ul,"待处理数据","danger"))->addFooterMore(U("admin/review/index"));
 ```
 
 效果图
@@ -195,58 +215,17 @@ echo $ul;
 ![image](https://user-images.githubusercontent.com/35066497/134834656-30d472d0-39df-4074-b830-a5c351b3df99.png)
 
 函数说明
-+ setHeader
-
-  设置容器标题
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | header | 标题 | string | 是   |   |
-  
-+ setBg
-
-  指定背景主题色，默认为primary，见主题颜色说明
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | bg | 背景主题色 | string |  是   |   |
-  
-+ addFooterUrl
-
-  添加底部跳转链接
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | title | 标题 | string | 是   |   |
-  | url | 链接  | string| 否   |   |
-  
-+ setFooter
-
-  设置底部html
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | footer | html | string | 是   |   |
-  
-+ setFooterExtraClass
-
-  指定底部html样式
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | footer_extra_class | css类名 |  string  | 是   |   |
-  
 + addLiItem
 
-  添加一个li项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
+  添加一个li项，为\AdminLTE\Widgets\ListBox\ListItem 对象
 
   | 参数     | 说明                           | 类型 | 必填 | 默认值 |
   | :------- | :----------------------------- | ---- | ---- | :----- |
-  | item | \AdminLTE\Widgets\UlListCard\LiItem 对象 | object | 是   |   |
+  | item | \AdminLTE\Widgets\ListBox\ListItem 对象 | object | 是   |   |
 
 
-### LiItem
-无需列表项，与UlListCard搭配使用
+### ListItem
+列表项，与 \AdminLTE\Widgets\ListBox\ListBox 搭配使用
 
 函数说明
 + setTitle

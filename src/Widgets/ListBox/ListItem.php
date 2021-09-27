@@ -1,10 +1,10 @@
 <?php
 
 
-namespace AdminLTE\Widgets\UlListCard;
+namespace AdminLTE\Widgets\ListBox;
 
 
-class LiItem
+class ListItem
 {
     public $title;
     public $title_extra_class;
@@ -82,7 +82,7 @@ HTML;
         return implode(" ", $right_tag_arr);
     }
 
-    public function buildItemBody(){
+    public function buildItemHtml(){
         $title_color = $this->title_color ? 'qs-admin-lte-text-'.$this->title_color : null;
 
         return <<<itemBody
