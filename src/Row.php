@@ -19,7 +19,7 @@ class Row{
 
     public function addColumn($column, $width = 12, $auth_node = null)
     {
-        $column = filterOneItemWiAuthNode($column, $auth_node);
+        $column = filterOneItemByAuthNode($column, $auth_node);
 
         if($column && $column instanceof Column){
             $this->columns[] = $column;
