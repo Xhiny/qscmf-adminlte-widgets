@@ -13,6 +13,8 @@ composer require quansitech/qscmf-adminlte-widgets
 + [Column](https://github.com/quansitech/qscmf-adminlte-widgets#Column)
 + [Card](https://github.com/quansitech/qscmf-adminlte-widgets#Card)
 + [InfoBox](https://github.com/quansitech/qscmf-adminlte-widgets#InfoBox)
++ [Tab](https://github.com/quansitech/qscmf-adminlte-widgets#Tab)
++ [ListBox](https://github.com/quansitech/qscmf-adminlte-widgets#ListBox)
 
 ### Content
 面板组件，所有的子组件都必须添加到Content组件
@@ -114,6 +116,32 @@ $card->setTitle('趋势图');
 $card->setBg($bg);
 ```
 
+函数说明
++ addFooterMore
+
+  添加底部跳转链接
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | url | 链接  | string| 是   |   |
+  | title | 标题 | string | 否   | 查看更多  |
+
++ setFooter
+
+  设置底部html
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | footer | html | string | 是   |   |
+
++ setFooterExtraClass
+
+  指定底部html样式
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | footer_extra_class | css类名 |  string  | 是   |   |
+
 
 ### InfoBox
 可设置图标，说明文字，数字，提示的数据展示组件
@@ -153,6 +181,90 @@ $tab->addTab('title', 'body', 'tips');
 // 多个tab则实现多个addTab方法
 $tab->addTab('divider', new DividerBuilder('222'));
 ```
+
+### ListBox
+设置列表组件
+
+示例:
+
+```php
+$list_box = new \AdminLTE\Widgets\ListBox\ListBox();
+
+// 获取需要展示的数据
+$list = [["id" => 1,"title" => "title","amount" => 100,"summary"=>"summary","date"=>date("Y-m-d", time())]];
+
+foreach ($list as $v){
+    $item = new \AdminLTE\Widgets\ListBox\ListItem();
+    // 设置标题及字体颜色
+    $item->setTitle($v['title'],"primary");
+    // 设置标题右边标签项及其背景颜色
+    $item->addRightTag("$".$v['amount'],"success");
+    // 设置描述项    
+    $item->addColumn($v['summary']);
+    $item->addColumn($v['date']);
+    // 设置点击标题跳转链接    
+    $item->setUrl(U("admin/review/detail",['id'=>$v['id']]));
+    // 添加列表项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
+    $list_box->addListItem($item);
+}
+
+echo (new \AdminLTE\Widgets\Card($list_box,"待处理数据","danger"))->addFooterMore(U("admin/review/index"));
+```
+
+效果图
+
+![image](https://user-images.githubusercontent.com/35066497/134834656-30d472d0-39df-4074-b830-a5c351b3df99.png)
+
+函数说明
++ addListItem
+
+  添加列表项，为\AdminLTE\Widgets\ListBox\ListItem 对象
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | item | \AdminLTE\Widgets\ListBox\ListItem 对象 | object | 是   |   |
+
+
+### ListItem
+列表项，与 \AdminLTE\Widgets\ListBox\ListBox 搭配使用
+
+函数说明
++ setTitle
+
+  设置标题及其字体颜色，默认为primary，见主题颜色说明
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | title | 标题 | string | 是   |   |
+  | title_color | 字体颜色 |  string | 否   | primary  |
+  
++ setUrl
+  
+  指定点击标题跳转链接
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | url | 跳转链接 | string | 是   |   |
+  
++ addRightTag
+
+  设置标题右边标签项及其背景颜色，默认为primary
+
+  bg可选值：primary，secondary，success， info， warning， danger， light， dark
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | value | 标签名称 | string | 是   |   |
+  | bg | 背景颜色 |  string |否   | primary |
+  
++ addColumn
+
+  添加描述项
+
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
+  | column | 描述内容 | string | 是   |   |
+
 
 ## 背景主题色
 <font color='#17a2b8'>info #17a2b8</font>

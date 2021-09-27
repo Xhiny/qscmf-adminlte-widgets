@@ -9,6 +9,9 @@ class Card{
     protected $remove;
     protected $body;
 
+    protected $footer = null;
+    protected $footer_extra_class = null;
+
     public function __construct($body = '', $title = '', $bg = 'info', $collapse = true, $remove = true)
     {
         $this->setBody($body);
@@ -65,6 +68,37 @@ html;
         return $this;
     }
 
+    public function addFooterMore($url, $title = "查看更多"){
+        $footer_url = <<<HTML
+<a href="{$url}" class="uppercase">{$title}</a>
+HTML;
+
+        $this->setFooter($footer_url);
+        $this->setFooterExtraClass($this->footer_extra_class." text-center");
+
+        return $this;
+    }
+
+    public function setFooter($footer){
+        $this->footer = $footer;
+        return $this;
+    }
+
+    public function setFooterExtraClass($footer_extra_class){
+        $this->footer_extra_class = $footer_extra_class;
+        return $this;
+    }
+
+    protected function buildFooter(){
+        $footer_html = <<<HTML
+<div class="card-footer {$this->footer_extra_class}">
+{$this->footer}
+</div>
+HTML;
+
+        return $this->footer ? $footer_html : null;
+    }
+
     public function __toString()
     {
         return <<<result
@@ -79,6 +113,7 @@ html;
   <div class="card-body">
     {$this->body}
   </div>
+    {$this->buildFooter()}
 </div>
 result;
     }
