@@ -190,6 +190,10 @@ foreach ($list as $v){
 echo $ul;
 ```
 
+效果图
+
+![image](https://user-images.githubusercontent.com/35066497/134834656-30d472d0-39df-4074-b830-a5c351b3df99.png)
+
 函数说明
 + setHeader
 
@@ -228,8 +232,8 @@ echo $ul;
 
   指定底部html样式
 
-  | 参数     | 说明                           | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | :----- |
+  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
+  | :------- | :----------------------------- | ---- | ---- | :----- |
   | footer_extra_class | css类名 |  string  | 是   |   |
   
 + addLiItem
