@@ -117,7 +117,7 @@ $card->setBg($bg);
 ```
 
 函数说明
-+ addFooterMoreUrl
++ addFooterMore
 
   添加底部跳转链接
 
@@ -188,10 +188,11 @@ $tab->addTab('divider', new DividerBuilder('222'));
 示例:
 
 ```php
-$ul = new \AdminLTE\Widgets\ListBox\ListBox();
+$list_box = new \AdminLTE\Widgets\ListBox\ListBox();
 
 // 获取需要展示的数据
 $list = [["id" => 1,"title" => "title","amount" => 100,"summary"=>"summary","date"=>date("Y-m-d", time())]];
+
 foreach ($list as $v){
     $item = new \AdminLTE\Widgets\ListBox\ListItem();
     // 设置标题及字体颜色
@@ -203,11 +204,11 @@ foreach ($list as $v){
     $item->addColumn($v['date']);
     // 设置点击标题跳转链接    
     $item->setUrl(U("admin/review/detail",['id'=>$v['id']]));
-    // 添加一个li项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
-    $ul->addListItem($item);
+    // 添加列表项，为\AdminLTE\Widgets\UlListCard\LiItem 对象
+    $list_box->addListItem($item);
 }
 
-echo (new \AdminLTE\Widgets\Card($ul,"待处理数据","danger"))->addFooterMore(U("admin/review/index"));
+echo (new \AdminLTE\Widgets\Card($list_box,"待处理数据","danger"))->addFooterMore(U("admin/review/index"));
 ```
 
 效果图
@@ -215,9 +216,9 @@ echo (new \AdminLTE\Widgets\Card($ul,"待处理数据","danger"))->addFooterMore
 ![image](https://user-images.githubusercontent.com/35066497/134834656-30d472d0-39df-4074-b830-a5c351b3df99.png)
 
 函数说明
-+ addLiItem
++ addListItem
 
-  添加一个li项，为\AdminLTE\Widgets\ListBox\ListItem 对象
+  添加列表项，为\AdminLTE\Widgets\ListBox\ListItem 对象
 
   | 参数     | 说明                           | 类型 | 必填 | 默认值 |
   | :------- | :----------------------------- | ---- | ---- | :----- |
