@@ -5,24 +5,26 @@ class Row{
 
     protected $columns = [];
 
-    public function __construct($content = '', $width=12)
+    public function __construct($content = '', $width=12, $auth_node =null)
     {
         if($content != ''){
             if($content instanceof Column){
-                $this->addColumn($content);
+                $this->addColumn($content, null, $auth_node);
             }
             else{
-                $this->addColumn(new Column($content, $width));
+                $this->addColumn(new Column($content, $width), null, $auth_node);
             }
         }
     }
 
-    public function addColumn($column, $width = 12)
+    public function addColumn($column, $width = 12, $auth_node = null)
     {
-        if($column instanceof Column){
+        $column = filterOneItemWiAuthNode($column, $auth_node);
+
+        if($column && $column instanceof Column){
             $this->columns[] = $column;
         }
-        else{
+        elseif($column){
             $this->columns[] = new Column($column, $width);
         }
         return $this;
