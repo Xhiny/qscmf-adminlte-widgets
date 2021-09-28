@@ -223,7 +223,7 @@
  * ------------------------------------------------------------------------
  */
 
-var NAME$9 = 'tab';
+var NAME$9 = 'qsTab';
 var VERSION$9 = '4.5.2';
 var DATA_KEY$9 = 'bs.tab';
 var EVENT_KEY$9 = "." + DATA_KEY$9;
@@ -243,7 +243,7 @@ var SELECTOR_DROPDOWN$1 = '.dropdown';
 var SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
 var SELECTOR_ACTIVE$2 = '.active';
 var SELECTOR_ACTIVE_UL = '> li > .active';
-var SELECTOR_DATA_TOGGLE$4 = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]';
+var SELECTOR_DATA_TOGGLE$4 = '[data-toggle="qs-lte-tab"], [data-toggle="qs-lte-pill"], [data-toggle="qs-lte-list"]';
 var SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
 var SELECTOR_DROPDOWN_ACTIVE_CHILD = '> .dropdown-menu .active';
 /**
