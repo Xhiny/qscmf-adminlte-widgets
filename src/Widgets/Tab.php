@@ -10,11 +10,17 @@ class Tab{
     protected $tab_options;
     protected $all_header;
     protected $all_body;
+    protected $data_toggle_tab_name = "qs-lte-tab";
+    protected $data_toggle_pill_name = "qs-lte-pill";
+    protected $data_toggle_list_name = "qs-lte-list";
+
+    protected $js_url = null;
 
     public function __construct($bg='primary')
     {
         $this->key = Str::uuid()->toString();
         self::setBg($bg);
+        $this->js_url = __ROOT__. '/Public/adminlte/js/tab.js';
     }
 
     public function setBg($bg){
@@ -47,7 +53,7 @@ html;
 
         return <<<itemHrader
 <li class="nav-item">
-    <a class="nav-link {$active_class}" id="custom-tabs-{$tab_key}-tab" data-toggle="pill" href="#custom-tabs-{$tab_key}" role="tab" aria-controls="custom-tabs-{$tab_key}" aria-selected="{$is_select}">
+    <a class="nav-link {$active_class}" id="custom-tabs-{$tab_key}-tab" data-toggle="{$this->data_toggle_pill_name}" href="#custom-tabs-{$tab_key}" role="tab" aria-controls="custom-tabs-{$tab_key}" aria-selected="{$is_select}">
 {$title}{$tips}
 </a>
 </li>
@@ -140,6 +146,16 @@ body;
         }, $this->tab_options);
     }
 
+    protected function importJs(){
+        return <<<HTML
+    <notdefined name="QS_LTE_TAB">
+        <script type="text/javascript" src="{$this->js_url}"></script>
+        <define name="QS_LTE_TAB" value="1" />
+    </notdefined>
+HTML;
+
+    }
+
     public function __toString(){
         $this->parseTab();
 
@@ -148,6 +164,7 @@ body;
 {$this->buildHeader()}
 {$this->buildBody()}
 {$this->endTab()}
+{$this->importJs()}
 html;
 
     }
