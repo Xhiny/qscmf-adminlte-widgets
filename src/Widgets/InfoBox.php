@@ -8,6 +8,7 @@ class InfoBox{
     protected $amount;
     protected $bg;
     protected $tips;
+    protected $jump_opt = null;
 
     public function __construct($text, $amount, $bg = '', $icon = '')
     {
@@ -44,9 +45,15 @@ icon;
         return $this;
     }
 
+    public function jumpTo($url, $is_blank=false){
+        $this->jump_opt = ['url' =>  $url, 'is_blank' => $is_blank];
+
+        return $this;
+    }
+
     public function __toString(){
 
-        return <<<html
+        $html = <<<html
 <div class="info-box{$this->bg}">
   {$this->icon}
   <div class="info-box-content">
@@ -57,5 +64,13 @@ icon;
   </div>
 </div>
 html;
+
+        if ($this->jump_opt && isset($this->jump_opt['url'])){
+            $href = $this->jump_opt['url'];
+            $target = $this->jump_opt['is_blank'] ? '_blank' : '_self';
+            $html = '<a href="'.$href.'" target="'.$target.'">'.$html.'</a>';
+        }
+
+        return $html;
     }
 }

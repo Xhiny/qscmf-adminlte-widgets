@@ -201,6 +201,11 @@ $box->setIcon('users');
 
 //设置背景主题色
 $box->setBg('info');
+
+//设置点击跳转页面
+//第一个参数，页面路径
+//第二个参数，是否在新页面打开，默认为 false
+$box->jumpTo($url,$is_blank);
 ```
 
 ### Tab
