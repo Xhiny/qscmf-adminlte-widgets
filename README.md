@@ -1,4 +1,5 @@
 # qscmf-adminlte-widgets
+
 adminlte 组件
 
 ## 安装
@@ -8,6 +9,7 @@ composer require quansitech/qscmf-adminlte-widgets
 ```
 
 ## 控件列表
+
 + [Content](https://github.com/quansitech/qscmf-adminlte-widgets#Content)
 + [Row](https://github.com/quansitech/qscmf-adminlte-widgets#Row)
 + [Column](https://github.com/quansitech/qscmf-adminlte-widgets#Column)
@@ -15,13 +17,16 @@ composer require quansitech/qscmf-adminlte-widgets
 + [InfoBox](https://github.com/quansitech/qscmf-adminlte-widgets#InfoBox)
 + [Tab](https://github.com/quansitech/qscmf-adminlte-widgets#Tab)
 + [ListBox](https://github.com/quansitech/qscmf-adminlte-widgets#ListBox)
++ [Gap](https://github.com/quansitech/qscmf-adminlte-widgets#Gap)
 
 ### Content
+
 面板组件，所有的子组件都必须添加到Content组件
 
 面板是表格结构，所有的组件都将基于行列结构嵌入
 
 用法:
+
 ```php
 //$view 是 Think\View 对象
 $content = new Content($view);
@@ -46,16 +51,17 @@ $content->display();
 ```
 
 函数说明
+
 + addRow
-
+  
   设置行内容
- 
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | row | \AdminLTE\Row组件或者html字符串 | object I string | 是   |   |
-  | width | 行宽度，最大12，row为object时失效 |  string | 否   |   |
-  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
-
+  
+  | 参数        | 说明                       | 类型              | 必填  | 默认值 |
+  |:--------- |:------------------------ | --------------- | --- |:--- |
+  | row       | \AdminLTE\Row组件或者html字符串 | object I string | 是   |     |
+  | width     | 行宽度，最大12，row为object时失效   | string          | 否   |     |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名      | string I array  | 否   |     |
+  
   若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
   and：用户拥有全部权限则显示，格式为：
@@ -65,9 +71,11 @@ $content->display();
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
 
 ### Row
+
 行组件，行是面板表格的基础结构
 
 用法：
+
 ```php
 //实例化row
 $row = new Row();
@@ -86,16 +94,17 @@ $row->addColumn($column, 4);
 ```
 
 函数说明
+
 + addColumn
-
+  
   设置行内容
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | column | \AdminLTE\Column组件或者html字符串 | object I string | 是   |   |
-  | width | 列宽度，最大12，column为object时失效 |  string | 否   |   |
-  | auth_node | 行权限点，格式为 模块.控制器.方法名 |  string I array | 否   |   |
-
+  
+  | 参数        | 说明                          | 类型              | 必填  | 默认值 |
+  |:--------- |:--------------------------- | --------------- | --- |:--- |
+  | column    | \AdminLTE\Column组件或者html字符串 | object I string | 是   |     |
+  | width     | 列宽度，最大12，column为object时失效   | string          | 否   |     |
+  | auth_node | 行权限点，格式为 模块.控制器.方法名         | string I array  | 否   |     |
+  
   若auth_node存在多个值，支持配置不同逻辑（logic值为and或者or）判断是否显示，默认为and：
   
   and：用户拥有全部权限则显示，格式为：
@@ -105,9 +114,11 @@ $row->addColumn($column, 4);
   ['node' => ['模块.控制器.方法名','模块.控制器.方法名'], 'logic' => 'or']
 
 ### Column
+
 列组件，列是面板表格的基础结构，一般都会嵌入行组件中使用
 
 用法：
+
 ```php
 $box = <<<html
 <div style="width:100%;height:100px;background-color: red;"></div>
@@ -125,9 +136,11 @@ $column->append($box2);
 ```
 
 ### Card
+
 可折叠关闭的容器组件
 
 用法:
+
 ```php
 //第一个参数，设定card body部分的html内容，或者是实现了__toString魔术函数的对象
 //第二个参数，card的标题
@@ -155,36 +168,38 @@ $card->setBg($bg);
 ```
 
 函数说明
+
 + addFooterMore
-
+  
   添加底部跳转链接
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | url | 链接  | string| 是   |   |
-  | title | 标题 | string | 否   | 查看更多  |
+  
+  | 参数    | 说明  | 类型     | 必填  | 默认值  |
+  |:----- |:--- | ------ | --- |:---- |
+  | url   | 链接  | string | 是   |      |
+  | title | 标题  | string | 否   | 查看更多 |
 
 + setFooter
-
+  
   设置底部html
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | footer | html | string | 是   |   |
+  
+  | 参数     | 说明   | 类型     | 必填  | 默认值 |
+  |:------ |:---- | ------ | --- |:--- |
+  | footer | html | string | 是   |     |
 
 + setFooterExtraClass
-
+  
   指定底部html样式
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | footer_extra_class | css类名 |  string  | 是   |   |
-
+  
+  | 参数                 | 说明    | 类型     | 必填  | 默认值 |
+  |:------------------ |:----- | ------ | --- |:--- |
+  | footer_extra_class | css类名 | string | 是   |     |
 
 ### InfoBox
+
 可设置图标，说明文字，数字，提示的数据展示组件
 
 用法：
+
 ```php
 //实例化
 //第一个参数，数据描述
@@ -209,9 +224,11 @@ $box->jumpTo($url,$is_blank);
 ```
 
 ### Tab
+
 可设置多个标签页的组件
 
 用法:
+
 ```php
 // 参数为背景主题色，默认为primary，见主题颜色说明
 $tab = new Tab('success');
@@ -226,6 +243,7 @@ $tab->addTab('divider', new DividerBuilder('222'));
 ```
 
 ### ListBox
+
 设置列表组件
 
 示例:
@@ -259,57 +277,78 @@ echo (new \AdminLTE\Widgets\Card($list_box,"待处理数据","danger"))->addFoot
 ![image](https://user-images.githubusercontent.com/35066497/134834656-30d472d0-39df-4074-b830-a5c351b3df99.png)
 
 函数说明
+
 + addListItem
-
+  
   添加列表项，为\AdminLTE\Widgets\ListBox\ListItem 对象
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | item | \AdminLTE\Widgets\ListBox\ListItem 对象 | object | 是   |   |
-
+  
+  | 参数   | 说明                                    | 类型     | 必填  | 默认值 |
+  |:---- |:------------------------------------- | ------ | --- |:--- |
+  | item | \AdminLTE\Widgets\ListBox\ListItem 对象 | object | 是   |     |
 
 ### ListItem
+
 列表项，与 \AdminLTE\Widgets\ListBox\ListBox 搭配使用
 
 函数说明
+
 + setTitle
-
-  设置标题及其字体颜色，默认为primary，见主题颜色说明
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | title | 标题 | string | 是   |   |
-  | title_color | 字体颜色 |  string | 否   | primary  |
   
+  设置标题及其字体颜色，默认为primary，见主题颜色说明
+  
+  | 参数          | 说明   | 类型     | 必填  | 默认值     |
+  |:----------- |:---- | ------ | --- |:------- |
+  | title       | 标题   | string | 是   |         |
+  | title_color | 字体颜色 | string | 否   | primary |
+
 + setUrl
   
   指定点击标题跳转链接
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | url | 跳转链接 | string | 是   |   |
   
+  | 参数  | 说明   | 类型     | 必填  | 默认值 |
+  |:--- |:---- | ------ | --- |:--- |
+  | url | 跳转链接 | string | 是   |     |
+
 + addRightTag
-
-  设置标题右边标签项及其背景颜色，默认为primary
-
-  bg可选值：primary，secondary，success， info， warning， danger， light， dark
-
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | value | 标签名称 | string | 是   |   |
-  | bg | 背景颜色 |  string |否   | primary |
   
+  设置标题右边标签项及其背景颜色，默认为primary
+  
+  bg可选值：primary，secondary，success， info， warning， danger， light， dark
+  
+  | 参数    | 说明   | 类型     | 必填  | 默认值     |
+  |:----- |:---- | ------ | --- |:------- |
+  | value | 标签名称 | string | 是   |         |
+  | bg    | 背景颜色 | string | 否   | primary |
+
 + addColumn
-
+  
   添加描述项
+  
+  | 参数     | 说明   | 类型     | 必填  | 默认值 |
+  |:------ |:---- | ------ | --- |:--- |
+  | column | 描述内容 | string | 是   |     |
 
-  | 参数     | 说明                           | 类型 | 必填 | 默认值 |
-  | :------- | :----------------------------- | ---- | ---- | :----- |
-  | column | 描述内容 | string | 是   |   |
+## 
+
+### Gap
+
+间隔栏
+
+```php
+//构造函数，20指间隔的高度，单位px
+$gap = new Gap(20);
+
+
+//或者
+$gap = new Gap();
+$gap->setHeight(20);
+
+```
+
 
 
 ## 背景主题色
+
 <font color='#17a2b8'>info #17a2b8</font>
 
 <font color='#28a745'>success #28a745</font>
@@ -352,5 +391,6 @@ echo (new \AdminLTE\Widgets\Card($list_box,"待处理数据","danger"))->addFoot
 
 <font color='#3d9970'>olive #3d9970</font>
 
-#### 效果图 
+#### 效果图
+
 ![image](https://user-images.githubusercontent.com/35066497/90729026-7d4a2780-e2f8-11ea-9fa7-a77735e0eb33.png)
