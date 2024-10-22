@@ -20,7 +20,6 @@ class Tab{
     {
         $this->key = Str::uuid()->toString();
         self::setBg($bg);
-        $this->js_url = __ROOT__. '/Public/adminlte/js/tab.js';
     }
 
     public function setBg($bg){
@@ -47,13 +46,13 @@ html;
     }
 
     protected function buildItemHeader($tab_key, $title, $is_active = false, $tips = null){
-        $active_class = $is_active === true ? 'active show' : null;
+        $active_class = $is_active === true ? 'active' : null;
         $is_select = $is_active === true ? 'true' : 'false';
         $tips = $tips ? $this->setTips($tips) : '';
 
         return <<<itemHrader
-<li class="nav-item">
-    <a class="nav-link {$active_class}" id="custom-tabs-{$tab_key}-tab" data-toggle="{$this->data_toggle_pill_name}" href="#custom-tabs-{$tab_key}" role="tab" aria-controls="custom-tabs-{$tab_key}" aria-selected="{$is_select}">
+<li class="nav-item {$active_class}">
+    <a class="nav-link" id="custom-tabs-{$tab_key}-tab" data-toggle="{$this->data_toggle_pill_name}" href="#custom-tabs-{$tab_key}" role="tab" aria-controls="custom-tabs-{$tab_key}" aria-selected="{$is_select}">
 {$title}{$tips}
 </a>
 </li>
@@ -69,7 +68,7 @@ tips;
     }
 
     protected function buildItemBody($tab_key, $text, $is_active = false){
-        $active_str = $is_active === true ? 'active show' : null;
+        $active_str = $is_active === true ? 'in active' : null;
 
         return <<<itemBody
 <div class="tab-pane fade {$active_str}" id="custom-tabs-{$tab_key}" role="tabpanel" aria-labelledby="custom-tabs-{$tab_key}-tab">
@@ -149,7 +148,12 @@ body;
     protected function importJs(){
         return <<<HTML
     <notdefined name="QS_LTE_TAB">
-        <script type="text/javascript" src="{$this->js_url}"></script>
+        <script>
+        $('#custom-tabs-{$this->key}-tab a').click(function (e) {
+              e.preventDefault()
+              $(this).tab('show')
+        })
+        </script>
         <define name="QS_LTE_TAB" value="1" />
     </notdefined>
 HTML;
